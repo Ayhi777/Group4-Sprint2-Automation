@@ -1,4 +1,5 @@
 Feature: As a user, I should be able to log in.
+  @smoke
   Scenario Outline: User can login with valid credentials (either clicking on the "Login button" or hitting the
   "Enter" key from the keyboard as the last step)
     Given the user on the login page

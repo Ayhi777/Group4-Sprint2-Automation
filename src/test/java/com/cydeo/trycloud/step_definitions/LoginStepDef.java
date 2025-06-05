@@ -6,12 +6,8 @@ import com.cydeo.trycloud.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-public class login_stepDef {
+public class LoginStepDef {
 
     @Given("the user on the login page")
     public void the_user_on_the_login_page() {

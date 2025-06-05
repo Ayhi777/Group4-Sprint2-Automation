@@ -14,14 +14,14 @@ import java.time.Duration;
 import java.util.List;
 
 public class FileUploadDeletePage extends BasePage {
-   public FileUploadDeletePage(){
-       PageFactory.initElements(Driver.getDriver(), this);
-   }
+    public FileUploadDeletePage(){
+        PageFactory.initElements(Driver.getDriver(), this);
+    }
 
-   @FindBy(css = ".button.new")
+    @FindBy(css = ".button.new")
     public WebElement addIcon;
 
-   @FindBy(xpath = "//label[@for='file_upload_start']/span[.='Upload file']")
+    @FindBy(xpath = "//label[@for='file_upload_start']/span[.='Upload file']")
     public WebElement uploadFileLink;
     @FindBy(css = "#file_upload_start")
     public WebElement uploadFile;
@@ -29,38 +29,38 @@ public class FileUploadDeletePage extends BasePage {
     @FindBy(xpath = "//tr[@data-type='file' or @data-type='dir']")
     public List<WebElement> filesList;
 
-   @FindBy(css = "#uploadprogressbar")
-   public WebElement progressbar;
+    @FindBy(css = "#uploadprogressbar")
+    public WebElement progressbar;
 
-   @FindBy(xpath = "(//span[@class='displayname'])[2]")
-   public WebElement newFolder;
+    @FindBy(xpath = "(//span[@class='displayname'])[2]")
+    public WebElement newFolder;
 
-   @FindBy(xpath = "//input[@value='New folder']")
-   public WebElement folderNameInput;
+    @FindBy(xpath = "//input[@value='New folder']")
+    public WebElement folderNameInput;
 
-   @FindBy(xpath = "//li/a/form/input[@type='submit']")
-   public WebElement folderSubmit;
+    @FindBy(xpath = "//li/a/form/input[@type='submit']")
+    public WebElement folderSubmit;
 
-   @FindBy(xpath = "//a[@class='menuitem action action-movecopy permanent']")
-   public WebElement moveOrCopy;
+    @FindBy(xpath = "//a[@class='menuitem action action-movecopy permanent']")
+    public WebElement moveOrCopy;
 
-   @FindBy(xpath = "//div[@class='filelist-container']//tr[@data-type='dir']")
-   public List<WebElement> chooseFolder;
+    @FindBy(xpath = "//div[@class='filelist-container']//tr[@data-type='dir']")
+    public List<WebElement> chooseFolder;
 
-   @FindBy(xpath = "//button[@class='primary']")
-   public WebElement moveButton;
+    @FindBy(xpath = "//button[@class='primary']")
+    public WebElement moveButton;
 
-   @FindBy(xpath = "//div[@class='oc-dialog-buttonrow twobuttons aside']/button[contains(text(),'Copy')]")
-   public WebElement copyButton;
+    @FindBy(xpath = "//div[@class='oc-dialog-buttonrow twobuttons aside']/button[contains(text(),'Copy')]")
+    public WebElement copyButton;
 
-   @FindBy(xpath = "//li[@data-id='trashbin']")
-   public WebElement deletedFiles;
+    @FindBy(xpath = "//li[@data-id='trashbin']")
+    public WebElement deletedFiles;
 
-   @FindBy(xpath = "//li[@class=' action-delete-container']")
-   public WebElement deleteFile;
+    @FindBy(xpath = "//li[@class=' action-delete-container']")
+    public WebElement deleteFile;
 
-   @FindBy(xpath = "//tr[@data-type='file']")
-   public List<WebElement> file;
+    @FindBy(xpath = "//tr[@data-type='file']")
+    public List<WebElement> file;
 
     @FindBy(xpath = "//tr[@data-type='dir']")
     public List<WebElement> folderList;
@@ -81,13 +81,13 @@ public class FileUploadDeletePage extends BasePage {
         return Driver.getDriver().findElement(By.xpath("//tr[@data-file='"+fileName+"']//a[@data-action='menu']"));
     }
 
-   public void uploadFile(String fileName){
-       addIcon.click();
-       uploadFile.sendKeys(System.getProperty("user.dir") + "/src/test/resources/uploadedFiles/"+fileName);
-       BrowserUtils.sleep(1);
-      waitUntilProgressbarDisappear();
-      BrowserUtils.sleep(3);
-   }
+    public void uploadFile(String fileName){
+        addIcon.click();
+        uploadFile.sendKeys(System.getProperty("user.dir") + "/src/test/resources/uploadedFiles/"+fileName);
+        BrowserUtils.sleep(1);
+        waitUntilProgressbarDisappear();
+        BrowserUtils.sleep(3);
+    }
 
     public void waitUntilProgressbarDisappear() {
         try {
@@ -108,23 +108,23 @@ public class FileUploadDeletePage extends BasePage {
 
     public String isUploadedOrCreated(String uploadedOrCreated) {
 
-           for (WebElement file: filesList) {
-               if (uploadedOrCreated.equals(file.getAttribute("data-file"))) {
+        for (WebElement file: filesList) {
+            if (uploadedOrCreated.equals(file.getAttribute("data-file"))) {
 
-                   return file.getAttribute("data-file");
-               }
-           }
-           return  null;
+                return file.getAttribute("data-file");
+            }
+        }
+        return  null;
     }
 
     public void moveTo(String item, String folder) {
-       int i=0;
-       for (WebElement file:filesList) {
+        int i=0;
+        for (WebElement file:filesList) {
             i++;
             if (item.equals(file.getAttribute("data-file"))) {
-               Driver.getDriver().findElement(By.xpath("(//a[@class='action action-menu permanent'])"+"["+i+"]")).click();
-               BrowserUtils.sleep(2);
-               moveOrCopy.click();
+                Driver.getDriver().findElement(By.xpath("(//a[@class='action action-menu permanent'])"+"["+i+"]")).click();
+                BrowserUtils.sleep(2);
+                moveOrCopy.click();
                 for (WebElement fld:chooseFolder) {
                     if (folder.equals(fld.getAttribute("data-entryname"))) {
                         BrowserUtils.sleep(1);
@@ -176,7 +176,7 @@ public class FileUploadDeletePage extends BasePage {
 
     public String isInDeletedFile(String item) {
 
-       deletedFiles.click();
+        deletedFiles.click();
         for (WebElement file: deletedFilesList) {
 
             scrollDown();
@@ -184,13 +184,13 @@ public class FileUploadDeletePage extends BasePage {
                 return file.getAttribute("data-original-title");
             }
         }
-       return null;
+        return null;
     }
 
     public void deleteItem(String item) {
-                fileActionMenu(item).click();
-                BrowserUtils.sleep(3);
-                deleteFile.click();
+        fileActionMenu(item).click();
+        BrowserUtils.sleep(3);
+        deleteFile.click();
         BrowserUtils.sleep(3);
     }
 
@@ -206,8 +206,8 @@ public class FileUploadDeletePage extends BasePage {
     }
 
     public int countFile() {
-       BrowserUtils.sleep(2);
-       int fileAmount=0;
+        BrowserUtils.sleep(2);
+        int fileAmount=0;
         for (WebElement fl:file) {
             ++fileAmount;
         }
@@ -228,20 +228,20 @@ public class FileUploadDeletePage extends BasePage {
     public int getDisplayedFileNumber() {
         scrollDown();
         int fileNum=0;
-       String[] str=fileDisAmount.getText().split(" ");
-       try {
-           fileNum=Integer.parseInt(str[0]);
-           System.out.println("fileNum = " + fileNum);
-       }catch (NumberFormatException ex){
-           ex.printStackTrace();
-       }
+        String[] str=fileDisAmount.getText().split(" ");
+        try {
+            fileNum=Integer.parseInt(str[0]);
+            System.out.println("fileNum = " + fileNum);
+        }catch (NumberFormatException ex){
+            ex.printStackTrace();
+        }
         return fileNum;
     }
 
     public int getDisplayedFolderNumber() {
         scrollDown();
         int folderNum=0;
-       String [] str=folderDisAmount.getText().split(" ");
+        String [] str=folderDisAmount.getText().split(" ");
         try {
             folderNum= Integer.parseInt(str[0]);
             System.out.println("folderNum = " + folderNum);
@@ -274,7 +274,7 @@ public class FileUploadDeletePage extends BasePage {
                 return file.getAttribute("data-file");
             }
         }
-       return null;
+        return null;
     }
 
     public boolean isInMainFileList(String item) {

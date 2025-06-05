@@ -5,6 +5,7 @@ import com.cydeo.trycloud.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.w3c.dom.html.HTMLInputElement;
 
 public class BasePage {
 
@@ -31,6 +32,8 @@ public class BasePage {
 
     @FindBy(xpath = "//a[@class='entity-name']")
     public WebElement trycloudHomePage;
+    public HTMLInputElement logOutLink;
+    public HTMLInputElement avatarIcon;
 
     public BasePage() {
         PageFactory.initElements(Driver.getDriver(), this);

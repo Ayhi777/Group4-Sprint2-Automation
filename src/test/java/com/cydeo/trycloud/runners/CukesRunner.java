@@ -1,4 +1,4 @@
-package com.cydeo.trycloud.rynners;
+package com.cydeo.trycloud.runners;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -13,9 +13,10 @@ import org.junit.runner.RunWith;
                 "me.jvt.cucumber.report.PrettyReports:target/cucumber"
         },
         features = "src/test/resources/features",
-        glue = "net/trycloud/step_defintions",
+        glue = "com.cydeo.trycloud.step_definitions",
 
         dryRun = false,
-        tags = "@smoke"
+        tags="@smoke"
+
 )
 public class CukesRunner {}
